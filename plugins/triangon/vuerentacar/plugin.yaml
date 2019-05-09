@@ -1,0 +1,11 @@
+plugin:
+    name: 'triangon.vuerentacar::lang.plugin.name'
+    description: 'triangon.vuerentacar::lang.plugin.description'
+    author: Triangon
+    icon: oc-icon-car
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Vehicles
+        url: triangon/vuerentacar/vehicles
+        icon: icon-car

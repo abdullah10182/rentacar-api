@@ -1,0 +1,5 @@
+title: Vehicles
+modelClass: Triangon\Vuerentacar\Models\Vehicle
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

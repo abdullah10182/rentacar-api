@@ -1,0 +1,11 @@
+name: Vehicles
+modelClass: Triangon\Vuerentacar\Models\Vehicle
+form: $/triangon/vuerentacar/models/vehicle/fields.yaml
+defaultRedirect: triangon/vuerentacar/vehicles
+create:
+    redirect: 'triangon/vuerentacar/vehicles/update/:id'
+    redirectClose: triangon/vuerentacar/vehicles
+update:
+    redirect: triangon/vuerentacar/vehicles
+    redirectClose: triangon/vuerentacar/vehicles
+preview: {  }
