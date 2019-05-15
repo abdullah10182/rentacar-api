@@ -9,3 +9,8 @@ navigation:
         label: Vehicles
         url: triangon/vuerentacar/vehicles
         icon: icon-car
+        sideMenu:
+            side-menu-item:
+                label: Locations
+                url: triangon/vuerentacar/locations
+                icon: icon-map-marker

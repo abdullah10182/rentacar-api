@@ -16,6 +16,19 @@ class Vehicle extends Model
      */
     public $table = 'triangon_vuerentacar_vehicles';
 
+    //relations
+    public $belongsToMany = [
+         'locations' => [
+             'Triangon\Vuerentacar\Models\Location',
+             'table' => 'triangon_vuerentacar_vehicles_locations',
+             'order' => 'title'
+         ]
+    ];
+
+    public $attachOne = [
+        'image' => '\System\Models\File'
+    ];
+
     /**
      * @var array Validation rules
      */

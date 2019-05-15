@@ -3,3 +3,9 @@
 1.0.2:
     - 'Created table triangon_vuerentacar_vehicles'
     - builder_table_create_triangon_vuerentacar_vehicles.php
+1.0.3:
+    - 'Created table triangon_vuerentacar_locations'
+    - builder_table_create_triangon_vuerentacar_locations.php
+1.0.4:
+    - 'Updated table triangon_vuerentacar_vehicles'
+    - builder_table_update_triangon_vuerentacar_vehicles.php

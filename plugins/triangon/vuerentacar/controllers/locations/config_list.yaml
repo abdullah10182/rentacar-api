@@ -1,0 +1,12 @@
+title: Locations
+modelClass: Triangon\Vuerentacar\Models\Location
+list: $/triangon/vuerentacar/models/location/columns.yaml
+recordUrl: 'triangon/vuerentacar/locations/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

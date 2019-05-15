@@ -1,0 +1,10 @@
+name: Locations
+form: $/triangon/vuerentacar/models/location/fields.yaml
+modelClass: Triangon\Vuerentacar\Models\Location
+defaultRedirect: triangon/vuerentacar/locations
+create:
+    redirect: 'triangon/vuerentacar/locations/update/:id'
+    redirectClose: triangon/vuerentacar/locations
+update:
+    redirect: triangon/vuerentacar/locations
+    redirectClose: triangon/vuerentacar/locations
