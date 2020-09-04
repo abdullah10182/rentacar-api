@@ -9,6 +9,8 @@ class Vehicle extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     //use \October\Rain\Database\Traits\Sortable;
+
+    protected $jsonable = ['repeater'];
     
 
     /**
@@ -26,9 +28,13 @@ class Vehicle extends Model
     ];
 
     public $attachOne = [
-        'image' => '\System\Models\File'
+        'image' => '\System\Models\File',
     ];
 
+    public $attachMany = [
+        'fileupload1' => '\System\Models\File',
+    ];
+    
     /**
      * @var array Validation rules
      */

@@ -8,13 +8,15 @@ use Lang;
 use Cache;
 use Event;
 use Config;
-use Cms\Models\ThemeData;
-use System\Models\Parameter;
-use October\Rain\Halcyon\Datasource\FileDatasource;
-use ApplicationException;
+use Exception;
 use SystemException;
 use DirectoryIterator;
-use Exception;
+use ApplicationException;
+use Cms\Models\ThemeData;
+use System\Models\Parameter;
+use October\Rain\Halcyon\Datasource\DbDatasource;
+use October\Rain\Halcyon\Datasource\FileDatasource;
+use October\Rain\Halcyon\Datasource\DatasourceInterface;
 
 /**
  * This class represents the CMS theme.
@@ -148,8 +150,12 @@ class Theme
     public static function getActiveThemeCode()
     {
         $activeTheme = Config::get('cms.activeTheme');
+        $themes = static::all();
+        $havingMoreThemes = count($themes) > 1;
+        $themeHasChanged = !empty($themes[0]) && $themes[0]->dirName !== $activeTheme;
+        $checkDatabase = $havingMoreThemes || $themeHasChanged;
 
-        if (App::hasDatabase()) {
+        if ($checkDatabase && App::hasDatabase()) {
             try {
                 try {
                     $dbResult = Cache::remember(self::ACTIVE_KEY, 1440, function () {
@@ -178,7 +184,9 @@ class Theme
          * If a value is returned from this halting event, it will be used as the active
          * theme code. Example usage:
          *
-         *     Event::listen('cms.theme.getActiveTheme', function() { return 'mytheme'; });
+         *     Event::listen('cms.theme.getActiveTheme', function () {
+         *         return 'mytheme';
+         *     });
          *
          */
         $apiResult = Event::fire('cms.theme.getActiveTheme', [], true);
@@ -232,7 +240,7 @@ class Theme
          * If a value is returned from this halting event, it will be used as the active
          * theme code. Example usage:
          *
-         *     Event::listen('cms.theme.setActiveTheme', function($code) {
+         *     Event::listen('cms.theme.setActiveTheme', function ($code) {
          *         \Log::info("Theme has been changed to $code");
          *     });
          *
@@ -262,7 +270,7 @@ class Theme
          * If a value is returned from this halting event, it will be used as the edit
          * theme code. Example usage:
          *
-         *     Event::listen('cms.theme.getEditTheme', function() {
+         *     Event::listen('cms.theme.getEditTheme', function () {
          *         return "the-edit-theme-code";
          *     });
          *
@@ -455,6 +463,8 @@ class Theme
         $contents = Yaml::render($values);
         File::put($path, $contents);
         $this->configCache = $values;
+
+        self::resetCache();
     }
 
     /**
@@ -505,7 +515,35 @@ class Theme
     }
 
     /**
-     * Ensures this theme is registered as a Halcyon them datasource.
+     * Remove data specific to this theme
+     * @return bool
+     */
+    public function removeCustomData()
+    {
+        if ($this->hasCustomData()) {
+            return $this->getCustomData()->delete();
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks to see if the database layer has been enabled
+     *
+     * @return boolean
+     */
+    public static function databaseLayerEnabled()
+    {
+        $enableDbLayer = Config::get('cms.databaseTemplates', false);
+        if (is_null($enableDbLayer)) {
+            $enableDbLayer = !Config::get('app.debug', false);
+        }
+
+        return $enableDbLayer && App::hasDatabase();
+    }
+
+    /**
+     * Ensures this theme is registered as a Halcyon datasource.
      * @return void
      */
     public function registerHalyconDatasource()
@@ -513,9 +551,28 @@ class Theme
         $resolver = App::make('halcyon');
 
         if (!$resolver->hasDatasource($this->dirName)) {
-            $datasource = new FileDatasource($this->getPath(), App::make('files'));
+            if (static::databaseLayerEnabled()) {
+                $datasource = new AutoDatasource([
+                    'database'   => new DbDatasource($this->dirName, 'cms_theme_templates'),
+                    'filesystem' => new FileDatasource($this->getPath(), App::make('files')),
+                ]);
+            } else {
+                $datasource = new FileDatasource($this->getPath(), App::make('files'));
+            }
+
             $resolver->addDatasource($this->dirName, $datasource);
         }
+    }
+
+    /**
+     * Get the theme's datasource
+     *
+     * @return DatasourceInterface
+     */
+    public function getDatasource()
+    {
+        $resolver = App::make('halcyon');
+        return $resolver->datasource($this->getDirName());
     }
 
     /**

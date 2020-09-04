@@ -16,7 +16,7 @@ tabs:
         backend::lang.user.account: icon-user
         backend::lang.user.groups: icon-users
         backend::lang.user.permissions: icon-key
-        
+
     fields:
         login:
             span: left
@@ -24,6 +24,7 @@ tabs:
 
         email:
             span: right
+            type: email
             label: backend::lang.user.email
 
         send_invite:
@@ -66,6 +67,10 @@ tabs:
 
 secondaryTabs:
     fields:
+        btn_impersonate:
+            label: ''
+            context: [update]
+            type: partial
         avatar:
             label: backend::lang.user.avatar
             type: fileupload

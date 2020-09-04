@@ -28,9 +28,34 @@ fields:
     image:
         label: 'Car Image'
         mode: image
+        imageWidth: '200'
+        imageHeight: '100'
         useCaption: true
         thumbOptions:
             mode: crop
             extension: auto
         span: auto
         type: fileupload
+    repeater:
+        label: Repeater
+        prompt: 'Add new item'
+        span: auto
+        type: repeater
+        form:
+            fields:
+                text1:
+                    label: Text
+                    span: auto
+                    type: text
+                mediafinder1:
+                    label: 'Media finder'
+                    mode: image
+                    imageWidth: '100'
+                    imageHeight: '100'
+                    span: auto
+                    type: mediafinder
+    available:
+        label: Available
+        span: auto
+        default: 1
+        type: switch

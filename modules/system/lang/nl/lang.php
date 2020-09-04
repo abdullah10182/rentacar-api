@@ -3,7 +3,7 @@
 return [
     'app' => [
         'name' => 'OctoberCMS',
-        'tagline' => 'Terug naar de basis'
+        'tagline' => 'Terug naar de basis',
     ],
     'locale' => [
         'ar' => 'العربية',
@@ -41,11 +41,12 @@ return [
         'fi' => 'Suomi',
         'sv' => 'Svenska',
         'sk' => 'Slovenský',
+        'sl' => 'Slovenščina',
         'tr' => 'Türkçe',
         'uk' => 'Українська мова',
         'zh-cn' => '简体中文',
         'zh-tw' => '繁體中文',
-        'vn' => 'Tiếng việt'
+        'vn' => 'Tiếng việt',
     ],
     'directory' => [
         'create_fail' => 'Map aanmaken mislukt: :name',
@@ -99,6 +100,7 @@ return [
             'label' => 'Plugin naam',
             'help' => 'Gebruik bij het invoeren van de naam de unieke code van de plugin. Bijvoorbeeld: RainLab.Blog',
         ],
+        'by_author' => 'Door :name',
     ],
     'plugins' => [
         'manage' => 'Beheer plugins',
@@ -108,9 +110,10 @@ return [
         'installed' => 'Geïnstalleerde plugins',
         'no_plugins' => 'Er zijn geen plugins geïnstalleerd uit de marketplace.',
         'recommended' => 'Aanbevolen',
-        'plugin_label'  => 'Plugin',
+        'plugin_label' => 'Plugin',
         'unknown_plugin' => 'Plugin is verwijderd van het bestandssysteem.',
         'select_label' => 'Selecteer actie...',
+        'bulk_actions_label' => 'Bulk acties',
         'check_yes' => 'Ja',
         'check_no' => 'Nee',
         'unfrozen' => 'Updates ingeschakeld',
@@ -195,6 +198,9 @@ return [
         'ses_key_comment' => 'Voer SES API key in',
         'ses_secret' => 'SES secret',
         'ses_secret_comment' => 'Voer SES API secret key in',
+        'sparkpost' => 'SparkPost',
+        'sparkpost_secret' => 'SparkPost secret',
+        'sparkpost_secret_comment' => 'Voer SparkPost API secret key in',
         'ses_region' => 'SES regio',
         'ses_region_comment' => 'Voer SES regio (bijv. us-east-1) in',
         'drivers_hint_header' => 'Stuurprogramma\'s niet geïnstalleerd',
@@ -239,7 +245,7 @@ return [
         'sending' => 'Versturen testbericht...',
         'return' => 'Terug naar templatelijst',
         'options' => 'Opties',
-        'disable_auto_inline_css' => 'Automatische inline CSS uitschakelen'
+        'disable_auto_inline_css' => 'Automatische inline CSS uitschakelen',
     ],
     'mail_brand' => [
         'menu_label' => 'E-mail branding',
@@ -253,7 +259,7 @@ return [
                 'description' => 'Omschrijving',
                 'price' => 'Prijs',
                 'centered' => 'Gecentreerd',
-                'right_aligned' => 'Rechts-uitgelijnd'
+                'right_aligned' => 'Rechts-uitgelijnd',
             ],
             'buttons' => [
                 'primary' => 'Primaire knop',
@@ -264,13 +270,13 @@ return [
             'more' => 'Wat meer tekst',
             'promotion' => 'Coupon code: OCTOBER',
             'subcopy' => 'Voettekst',
-            'thanks' => 'Bedankt'
+            'thanks' => 'Bedankt',
         ],
         'fields' => [
-            '_section_background' => 'Achtergrondkleur',
+            '_section_background' => 'Achtergrond',
             'body_bg' => 'Body',
             'content_bg' => 'Inhoud',
-            'content_inner_bg' => 'Binnenste inhoud ',
+            'content_inner_bg' => 'Binnenste inhoud',
             '_section_buttons' => 'Knoppen',
             'button_text_color' => 'Knoptekst',
             'button_primary_bg' => 'Primaire knop',
@@ -282,15 +288,15 @@ return [
             'text_color' => 'Tekst',
             'link_color' => 'Hyperlinks',
             'footer_color' => 'Footer',
-            '_section_borders' => 'Randkleur',
+            '_section_borders' => 'Randen',
             'body_border_color' => 'Inhoud',
             'subcopy_border_color' => 'Voettekst',
             'table_border_color' => 'Tabellen',
             '_section_components' => 'Componenten',
-            'panel_bg' => 'Paneel',
-            'promotion_bg' => 'Promotie',
+            'panel_bg' => 'Paneel achtergrond',
+            'promotion_bg' => 'Promotie achtergrond',
             'promotion_border_color' => 'Promotie randkleur',
-        ]
+        ],
     ],
     'install' => [
         'project_label' => 'Koppel aan project',
@@ -304,7 +310,7 @@ return [
     'updates' => [
         'title' => 'Beheer updates',
         'name' => 'Applicatie-update',
-        'menu_label' => 'Updates',
+        'menu_label' => 'Updates & Plugins',
         'menu_description' => "Update het systeem, beheer en installeer plugins en thema's.",
         'return_link' => 'Terug naar updates',
         'check_label' => 'Controleer op updates',
@@ -316,11 +322,14 @@ return [
         'plugin_author' => 'Auteur',
         'plugin_not_found' => 'Plugin not found',
         'core_current_build' => 'Huidige build',
+        'core_view_changelog' => 'Bekijk changelog',
         'core_build' => 'Build :build',
         'core_build_help' => 'De meest recente versie is beschikbaar.',
         'core_downloading' => 'Bestanden aan het downloaden',
         'core_extracting' => 'Bestanden aan het uitpakken',
         'core_set_build' => 'Build nummer bijwerken',
+        'changelog' => 'Changelog',
+        'changelog_view_details' => 'Bekijk details',
         'plugins' => 'Plugins',
         'themes' => "Thema's",
         'disabled' => 'Uitgeschakeld',
@@ -425,9 +434,11 @@ return [
         'manage_mail_templates' => 'Beheer e-mailsjablonen',
         'manage_mail_settings' => 'Beheer e-mailinstellingen',
         'manage_other_administrators' => 'Beheer mede-beheerders',
+        'impersonate_users' => 'Inloggen als',
         'manage_preferences' => 'Beheer back-end instellingen',
         'manage_editor' => 'Beheer code editor instellingen',
         'view_the_dashboard' => 'Toon dashboard',
+        'manage_default_dashboard' => 'Beheer het standaard dashboard',
         'manage_branding' => 'Back-end aanpassen',
     ],
     'log' => [
@@ -444,5 +455,24 @@ return [
     'media' => [
         'invalid_path' => 'Ongeldig pad opgegeven: \':path\'.',
         'folder_size_items' => 'item(s)',
+    ],
+    'page' => [
+        'custom_error' => [
+            'label' => 'Paginafout',
+            'help' => 'Excuses, er is een fout opgetreden. De pagina kan niet worden weergegeven.',
+        ],
+        'invalid_token' => [
+            'label' => 'Ongeldig security token',
+        ],
+        'maintenance' => [
+            'label' => 'Wij zijn zo weer terug!',
+            'help' => 'Op dit moment wordt er onderhoud uitgevoerd. Kom later terug.',
+            'message' => 'Bericht:',
+            'available_at' => 'Probeer het nog eens op:',
+        ],
+    ],
+    'pagination' => [
+        'previous' => 'Vorige',
+        'next' => 'Volgende',
     ],
 ];

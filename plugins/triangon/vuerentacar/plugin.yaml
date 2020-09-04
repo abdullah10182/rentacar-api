@@ -7,9 +7,13 @@ plugin:
 navigation:
     main-menu-item:
         label: Vehicles
-        url: triangon/vuerentacar/vehicles
+        url: /
         icon: icon-car
         sideMenu:
+            main-menu-item:
+                label: Vehicles
+                url: triangon/vuerentacar/vehicles
+                icon: icon-car
             side-menu-item:
                 label: Locations
                 url: triangon/vuerentacar/locations

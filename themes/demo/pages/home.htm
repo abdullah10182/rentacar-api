@@ -2,31 +2,32 @@ title = "Demonstration"
 url = "/"
 layout = "default"
 is_hidden = 0
+
+[editable]
+file = "welcome.htm"
+
+[builderDetails]
+modelClass = "Triangon\Vuerentacar\Models\Vehicle"
+identifierValue = "{{ :id =1 }}"
+modelKeyColumn = "id"
+displayColumn = "title"
+notFoundMessage = "Record not found"
 ==
 <?php
-
 function onInit(){
     dump('init home');
 }
-
 ?>
 ==
 <div class="jumbotron">
     <div class="container">
-        {% content "welcome.htm" %}
+    {% component 'editable' %}
+  
+        {% component 'builderDetails' %}
     </div>
 </div>
 
 <div class="container">
-
-    <div class="page-header">
-        <h2>Overview <small>Basic concepts</small></h2>
-    </div>
-    <p>
-        This page demonstrates the basic CMS features.
-        Usually each page built with October is a combination of a layout, page, partials and content blocks,
-        although in simple cases you can just use a page without anything else.
-    </p>
 
     <!-- Layouts -->
     <h3>Layouts</h3>

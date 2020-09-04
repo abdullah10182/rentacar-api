@@ -12,7 +12,7 @@ Route::get('vehicles', function() {
 Route::get('vehicles/filter/{id}', function($id) {
     $vehicles = Vehicle::wherehas('locations', function($query) use($id) {
         $query->where ('id', '=', $id);
-    })->get();
+    })->with(['image','locations'])->get();
     return $vehicles;
 });
 
