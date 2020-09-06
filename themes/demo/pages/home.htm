@@ -12,6 +12,14 @@ identifierValue = "{{ :id =1 }}"
 modelKeyColumn = "id"
 displayColumn = "title"
 notFoundMessage = "Record not found"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+
+[session]
+security = "all"
 ==
 <?php
 function onInit(){
@@ -26,7 +34,7 @@ function onInit(){
         {% component 'builderDetails' %}
     </div>
 </div>
-
+{% component 'account' %}
 <div class="container">
 
     <!-- Layouts -->

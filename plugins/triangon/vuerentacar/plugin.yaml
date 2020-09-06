@@ -7,7 +7,7 @@ plugin:
 navigation:
     main-menu-item:
         label: Vehicles
-        url: /
+        url: triangon/vuerentacar/vehicles
         icon: icon-car
         sideMenu:
             main-menu-item:
@@ -18,3 +18,7 @@ navigation:
                 label: Locations
                 url: triangon/vuerentacar/locations
                 icon: icon-map-marker
+            side-menu-item3:
+                label: Reservations
+                url: triangon/vuerentacar/reservations
+                icon: icon-soccer-ball-o

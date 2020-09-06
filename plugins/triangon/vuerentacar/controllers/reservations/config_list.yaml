@@ -1,0 +1,12 @@
+list: $/triangon/vuerentacar/models/reservation/columns.yaml
+modelClass: Triangon\Vuerentacar\Models\Reservation
+title: Reservations
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'triangon/vuerentacar/reservations/update/:id'

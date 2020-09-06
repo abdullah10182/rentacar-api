@@ -1,0 +1,10 @@
+name: Reservations
+form: $/triangon/vuerentacar/models/reservation/fields.yaml
+modelClass: Triangon\Vuerentacar\Models\Reservation
+defaultRedirect: triangon/vuerentacar/reservations
+create:
+    redirect: 'triangon/vuerentacar/reservations/update/:id'
+    redirectClose: triangon/vuerentacar/reservations
+update:
+    redirect: triangon/vuerentacar/reservations
+    redirectClose: triangon/vuerentacar/reservations

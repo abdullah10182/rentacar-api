@@ -1,0 +1,8 @@
+columns:
+    user_id:
+        label: User
+        type: text
+    category_name:
+        label: Categories
+        relation: vehicle
+        select: title

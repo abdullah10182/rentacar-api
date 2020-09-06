@@ -1,0 +1,13 @@
+fields:
+    user:
+        label: User
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    vehicle:
+        label: Vehicle
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        type: relation

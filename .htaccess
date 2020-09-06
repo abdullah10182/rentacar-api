@@ -1,4 +1,7 @@
 <IfModule mod_rewrite.c>
+    #fix for aut jwt
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
     <IfModule mod_negotiation.c>
         Options -MultiViews
