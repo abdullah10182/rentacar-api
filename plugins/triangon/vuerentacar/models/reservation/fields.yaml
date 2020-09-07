@@ -11,3 +11,12 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
+    fileupload1:
+        label: 'File upload'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

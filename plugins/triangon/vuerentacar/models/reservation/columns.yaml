@@ -4,5 +4,9 @@ columns:
         type: text
     category_name:
         label: Categories
-        relation: vehicle
+        type: text
         select: title
+        relation: vehicle
+    created_at:
+        label: created
+        type: text

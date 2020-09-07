@@ -19,6 +19,10 @@ class Reservation extends Model
      */
     public $table = 'triangon_vuerentacar_reservations';
 
+    public $attachOne = [
+        'fileupload1' => '\System\Models\File',
+    ];
+
     /**
      * @var array Validation rules
      */
