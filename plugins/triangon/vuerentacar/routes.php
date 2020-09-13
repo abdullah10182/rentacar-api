@@ -47,8 +47,10 @@ Route::middleware(['api','jwt.auth'])->group(function () {
         $file = new System\Models\File;
         $file->data = $request->files->get('fileupload1');
         $file->is_public = true;
-        $file->save();
-        //$reservation->save();
+        //$file->title = 'testdddddddf';
+        $result = $file->save();
+        $reservation->save();
+        $reservation->fileupload1()->add($file);
         return response()->json('Reservation Created!');
     });
 });
